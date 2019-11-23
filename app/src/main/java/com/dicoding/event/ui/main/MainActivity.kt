@@ -1,7 +1,8 @@
-package com.dicoding.event
+package com.dicoding.event.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dicoding.event.R
 
 class MainActivity : AppCompatActivity() {
 
