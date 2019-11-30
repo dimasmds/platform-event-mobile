@@ -44,5 +44,6 @@ ext {
     junit_version = '4.12'
     android_junit_version = '1.1.1'
     espresso_core = '3.2.0'
+    androidx_test_version = '1.1.0'
 
 }
