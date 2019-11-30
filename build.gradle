@@ -46,5 +46,8 @@ ext {
     android_junit_version = '1.1.1'
     espresso_core = '3.2.0'
     androidx_test_version = '1.1.0'
+    androidx_arch_core_testing = '2.0.0'
+    mockito_version = '2.23.4'
+    mockito_inline_version = '3.0.0'
 
 }
