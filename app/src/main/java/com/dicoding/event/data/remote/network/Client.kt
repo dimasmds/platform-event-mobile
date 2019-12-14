@@ -6,7 +6,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object Client {
     fun getClient(okHttpClient: OkHttpClient) : Retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.100.11/")
+        .baseUrl("http://192.168.100.21/")
         .addConverterFactory(MoshiConverterFactory.create())
         .client(okHttpClient)
         .build()
