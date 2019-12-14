@@ -1,11 +1,25 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/QuicksandMediumStyle</item>
+        <item name="android:editTextStyle">@style/QuicksandMediumStyle</item>
+    </style>
+
+    <style name="QuicksandHeaderStyle">
+        <item name="android:fontFamily">@font/quicksand_bold</item>
+    </style>
+
+    <style name="QuicksandMediumStyle">
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+    </style>
+
+    <style name="QuicksandRegularStyle">
+        <item name="android:fontFamily">@font/quicksand_regular</item>
     </style>
 
 </resources>
