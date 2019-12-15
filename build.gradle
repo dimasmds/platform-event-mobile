@@ -39,6 +39,7 @@ ext {
     preference_version = '1.1.0'
     coroutine_version = '1.2.2'
     moshi_version = '2.6.0'
+    material_design_version = '1.0.0'
 
     //testing
     junit_version = '4.12'
