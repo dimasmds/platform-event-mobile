@@ -42,6 +42,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     implementation "androidx.preference:preference:$preference_version"
+    implementation "com.google.android.material:material:$material_design_version"
 
     // lifecycle: ViewModel, LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
