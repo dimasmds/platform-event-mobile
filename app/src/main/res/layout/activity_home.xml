@@ -8,20 +8,15 @@
     android:background="@android:color/white"
     tools:context=".ui.home.HomeActivity">
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/activityHomeAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:elevation="0dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="10dp">
+            app:liftOnScroll="true">
 
             <ImageButton
                 android:id="@+id/activityHomeImageButtonDrawer"
@@ -29,14 +24,19 @@
                 android:layout_height="60dp"
                 android:src="@drawable/icon_brand"
                 android:padding="0dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
-                android:contentDescription="@string/hamburger_button"/>
+                android:contentDescription="@string/hamburger_button"
+                app:layout_scrollFlags="scroll|snap|enterAlways"/>
 
             <LinearLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -54,12 +54,12 @@
             </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <FrameLayout
-            android:layout_marginTop="16dp"
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/activityHomeFrameLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/activityHomeNavigationView"
