@@ -23,4 +23,8 @@
         <item name="android:fontFamily">@font/quicksand_regular</item>
     </style>
 
+    <style name="NavigationViewStyle" parent="Widget.MaterialComponents.NavigationView">
+        <item name="android:fontFamily">@font/quicksand_regular</item>
+    </style>
+
 </resources>
