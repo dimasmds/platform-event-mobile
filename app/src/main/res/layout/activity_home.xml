@@ -2,9 +2,74 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activityHomeDrawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".ui.home.HomeActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/activityHomeAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="0dp">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/activityHomeToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:elevation="0dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:text="@string/event"
+                    style="@style/QuicksandHeaderStyle"/>
+                <TextView
+                    android:id="@+id/activityHomeTitleNavigation"
+                    android:text="sebelumnya"
+                    android:textSize="24sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/QuicksandHeaderStyle"/>
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+<!--        <ImageButton-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:src="@drawable/icon_brand"-->
+<!--            android:padding="0dp"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:contentDescription="@string/hamburger_button"/>-->
+
+
+        <FrameLayout
+            android:layout_marginTop="16dp"
+            android:id="@+id/activityHomeFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/activityHomeNavigationView"
+        android:background="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/nav_header"
+        style="@style/Widget.MaterialComponents.NavigationView"
+        android:layout_gravity="start" />
 </androidx.drawerlayout.widget.DrawerLayout>

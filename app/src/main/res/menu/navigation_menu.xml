@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/navigationMenuUpcomingEvent"
+        android:title="@string/menu_upcoming_event"/>
+    <item android:id="@+id/navigationMenuLastEvent"
+        android:title="@string/menu_last_event"/>
+    <item android:id="@+id/navigationMenuYourEvent"
+        android:title="@string/menu_your_event"/>
+    <item android:id="@+id/navigationMenuYourBookmark"
+        android:title="@string/menu_your_bookmark"/>
+</menu>

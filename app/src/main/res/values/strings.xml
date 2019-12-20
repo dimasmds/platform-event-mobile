@@ -5,4 +5,12 @@
     <string name="login">Login</string>
     <string name="hint_password">password</string>
     <string name="hint_email">email</string>
+    <string name="hamburger_button">Hamburger Button</string>
+    <string name="event">event</string>
+    <string name="menu_upcoming_event">Upcoming Event</string>
+    <string name="menu_last_event">Last Event</string>
+    <string name="menu_your_event">Your Event</string>
+    <string name="menu_your_bookmark">Your Bookmark</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 </resources>
