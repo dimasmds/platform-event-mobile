@@ -46,7 +46,7 @@
                     style="@style/QuicksandHeaderStyle"/>
                 <TextView
                     android:id="@+id/activityHomeTitleNavigation"
-                    android:text="sebelumnya"
+                    tools:text="sebelumnya"
                     android:textSize="24sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

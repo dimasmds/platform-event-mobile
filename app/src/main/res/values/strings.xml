@@ -16,4 +16,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_title_upcoming">yang akan datang</string>
+    <string name="navigation_title_latest">sebelumnya</string>
+    <string name="navigation_title_your_event">yang dihadiri</string>
 </resources>
