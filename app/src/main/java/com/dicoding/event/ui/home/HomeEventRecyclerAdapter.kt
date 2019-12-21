@@ -1,4 +1,4 @@
-package com.dicoding.event.ui.upcoming
+package com.dicoding.event.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ import com.dicoding.event.data.remote.model.EventsResponse
 import com.dicoding.event.ext.formattedDate
 import com.squareup.picasso.Picasso
 
-class UpcomingRecyclerAdapter : RecyclerView.Adapter<UpcomingRecyclerAdapter.ViewHolder>() {
+class HomeEventRecyclerAdapter : RecyclerView.Adapter<HomeEventRecyclerAdapter.ViewHolder>() {
 
     var events: List<EventsResponse.Event> = listOf()
     set(value) {
