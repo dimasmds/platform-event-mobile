@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textViewStyle">@style/QuicksandMediumStyle</item>
         <item name="android:editTextStyle">@style/QuicksandMediumStyle</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
     <style name="QuicksandHeaderStyle">
@@ -19,6 +20,10 @@
     </style>
 
     <style name="QuicksandRegularStyle">
+        <item name="android:fontFamily">@font/quicksand_regular</item>
+    </style>
+
+    <style name="NavigationViewStyle" parent="Widget.MaterialComponents.NavigationView">
         <item name="android:fontFamily">@font/quicksand_regular</item>
     </style>
 

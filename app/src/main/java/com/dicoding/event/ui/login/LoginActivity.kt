@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.dicoding.event.R
+import com.dicoding.event.data.remote.model.UserResponse
 import com.dicoding.event.ext.invisible
+import com.dicoding.event.ext.launchActivity
 import com.dicoding.event.ext.visible
-import com.dicoding.event.utils.Error
-import com.dicoding.event.utils.Loading
-import com.dicoding.event.utils.Success
+import com.dicoding.event.ui.home.HomeActivity
+import com.dicoding.event.utils.*
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,6 +22,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        if(getUserPreference().email.toString().isNotEmpty()) {
+            launchActivity<HomeActivity>()
+            finish()
+        }
+
         loginViewModel.observerState.observe(this, Observer {
             when(it) {
                 is Loading -> {
@@ -30,8 +36,18 @@ class LoginActivity : AppCompatActivity() {
 
                 is Success<*> -> {
                     Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
+                    val auth = it.data as UserResponse.Auth
                     activityLoginButtonLogin.visible()
                     activityLoginProgressBar.invisible()
+
+                    with(UserPreference()) {
+                        email = auth.email
+                        username = auth.username
+                        setUserPreference(this)
+                    }
+
+                    launchActivity<HomeActivity>()
+                    finish()
                 }
 
                 is Error -> {

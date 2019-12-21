@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white"
+    android:orientation="vertical" android:layout_width="225dp"
+    android:layout_height="175dp">
+
+    <ImageView
+        android:id="@+id/navHeaderLogo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_brand" />
+
+    <TextView
+        android:id="@+id/naveHeaderName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:text="dimas@dicoding.com"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/navHeaderEmail"
+        app:layout_constraintTop_toBottomOf="@+id/navHeaderEmail" />
+
+    <TextView
+        android:id="@+id/navHeaderEmail"
+        style="@style/QuicksandHeaderStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Dimas Saputra"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/navHeaderLogo"
+        app:layout_constraintTop_toBottomOf="@+id/navHeaderLogo" />
+</androidx.constraintlayout.widget.ConstraintLayout>
