@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        if(getUserPreference().email.toString().isNotEmpty()) {
+        if(getUserPreference().email.isNotEmpty()) {
             launchActivity<HomeActivity>()
             finish()
         }
@@ -41,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
                     activityLoginProgressBar.invisible()
 
                     with(UserPreference()) {
+                        id = auth.id
                         email = auth.email
                         username = auth.username
                         setUserPreference(this)

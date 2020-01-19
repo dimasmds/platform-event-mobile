@@ -2,6 +2,7 @@ package com.dicoding.event.ui.home
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -24,6 +25,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_home)
 
         userPreference = getUserPreference()
+
+        Toast.makeText(this, userPreference.toString(), Toast.LENGTH_SHORT).show()
 
         activityHomeImageButtonDrawer.setOnClickListener {
             with(activityHomeDrawerLayout) {
