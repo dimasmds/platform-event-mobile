@@ -6,6 +6,10 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'jacoco'
+
+apply plugin: 'de.mannodermaus.android-junit5'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -16,11 +20,36 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArgument "runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // Add Kotlin source directory to all source sets
+    sourceSets.each {
+        it.java.srcDirs += "src/$it.name/kotlin"
+    }
+
+    testOptions {
+        junitPlatform {
+            filters {
+                engines {
+                    include 'spek2'
+                }
+            }
+            jacocoOptions {
+                // here goes all jacoco config, for example
+                html.enabled = true
+                xml.enabled = false
+                csv.enabled = false
+                unitTests.all {
+                    testLogging.events = ["passed", "skipped", "failed"]
+                }
+            }
         }
     }
 }
@@ -29,7 +58,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
 
     // Koin
@@ -65,6 +94,15 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$mockito_version"
     testImplementation "androidx.arch.core:core-testing:$androidx_arch_core_testing"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+
+    //SPEK Stuff
+    testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spek_version"
+    testImplementation "org.spekframework.spek2:spek-runner-junit5:$spek_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation "de.mannodermaus.junit5:android-test-core:1.0.0"
+    androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:1.0.0"
 
 
     // Android Testing Library
