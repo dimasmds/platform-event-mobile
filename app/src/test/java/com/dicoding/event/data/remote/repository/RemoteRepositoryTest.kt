@@ -8,7 +8,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
@@ -47,9 +46,9 @@ class RemoteRepositoryTest {
             )
         })
 
-        Mockito.`when`(services.getUpcomingEvent()).thenReturn(Calls.response(expectedRespond))
+        `when`(services.getUpcomingEvent()).thenReturn(Calls.response(expectedRespond))
         remoteRepository.getUpcomingEvent(repositoryCallback)
-        Mockito.verify(repositoryCallback).onSuccess(expectedRespond.events)
+        verify(repositoryCallback).onSuccess(expectedRespond.events)
     }
 
     @Test
