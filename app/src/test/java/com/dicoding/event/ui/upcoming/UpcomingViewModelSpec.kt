@@ -12,6 +12,7 @@ import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import org.mockito.Mockito.`when`
+import org.mockito.Mockito.times
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.gherkin.Feature
 import utils.LiveDataTestExecutor
@@ -21,6 +22,7 @@ object UpcomingViewModelSpec : Spek({
         val remoteRepository = mock<RemoteRepository>()
         val observer = mock<Observer<ViewModelState>>()
         val upcomingViewModel = UpcomingViewModel(remoteRepository)
+        var expectedResponse: ViewModelState? = null
 
         beforeEachScenario {
             LiveDataTestExecutor.setupDelegated()
@@ -37,7 +39,9 @@ object UpcomingViewModelSpec : Spek({
                     eventPoster = "Poster $it"
                 )
             }
-            val expectedRespond = Success(events)
+            Given("Expected Response with Success") {
+                expectedResponse = Success(events)
+            }
 
             When("Repository getting upcoming event") {
                 `when`(remoteRepository.getUpcomingEvent(any())).thenAnswer {
@@ -53,16 +57,18 @@ object UpcomingViewModelSpec : Spek({
             }
 
             Then("it should be success 🎉") {
-                verify(observer).onChanged(expectedRespond)
+                verify(observer).onChanged(expectedResponse)
             }
         }
 
         Scenario("Get upcoming events but error response") {
-            val expectedResponse = Error("not found")
+            Given("Expected Response with Error") {
+                expectedResponse = Error("not found")
+            }
 
             When("Repository getting upcoming event") {
                 `when`(remoteRepository.getUpcomingEvent(any())).thenAnswer {
-                    (it.arguments[0] as RepositoryCallback).onError(expectedResponse.message)
+                    (it.arguments[0] as RepositoryCallback).onError((expectedResponse as Error).message)
                 }
 
                 // calls
@@ -70,7 +76,7 @@ object UpcomingViewModelSpec : Spek({
             }
 
             Then("It should be show loading") {
-                verify(observer).onChanged(Loading)
+                verify(observer, times(2)).onChanged(Loading)
             }
 
             Then("It should be error 💀") {

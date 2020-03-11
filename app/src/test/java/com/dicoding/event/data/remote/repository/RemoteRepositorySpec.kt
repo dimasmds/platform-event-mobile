@@ -15,18 +15,21 @@ object RemoteRepositorySpec : Spek({
         val services = mock<Services>()
         val repositoryCallback = mock<RepositoryCallback>()
         val remoteRepository = RemoteRepository(services)
+        var expectedRespond: EventsResponse? = null
 
 
         Scenario("getting upcoming event with success respond") {
-            val expectedRespond = EventsResponse(error = false, message = "Success", events = List(2) {
-                EventsResponse.Event(
-                    eventId = it.toString(),
-                    eventName = "Event $it",
-                    eventCategory = "Category $it",
-                    eventDate = "Date $it",
-                    eventPoster = "Poster $it"
-                )
-            })
+            Given("Expected response with success") {
+                expectedRespond = EventsResponse(error = false, message = "Success", events = List(2) {
+                    EventsResponse.Event(
+                        eventId = it.toString(),
+                        eventName = "Event $it",
+                        eventCategory = "Category $it",
+                        eventDate = "Date $it",
+                        eventPoster = "Poster $it"
+                    )
+                })
+            }
 
             When("service get upcoming event") {
                 `when`(services.getUpcomingEvent()).thenReturn(Calls.response(expectedRespond))
@@ -35,16 +38,18 @@ object RemoteRepositorySpec : Spek({
                 remoteRepository.getUpcomingEvent(repositoryCallback)
             }
             Then("it should be success 🎉") {
-                verify(repositoryCallback).onSuccess(expectedRespond.events)
+                verify(repositoryCallback).onSuccess(expectedRespond?.events)
             }
         }
 
         Scenario("getting upcoming event but failed") {
-            val expectedRespond = EventsResponse(
-                error = true,
-                message = "Failed to get Upcoming Events",
-                events = listOf()
-            )
+            Given("Expected response with error") {
+                expectedRespond = EventsResponse(
+                    error = true,
+                    message = "Failed to get Upcoming Events",
+                    events = listOf()
+                )
+            }
 
             When("service get upcoming event") {
                 `when`(services.getUpcomingEvent()).thenReturn(Calls.response(expectedRespond))
@@ -54,7 +59,7 @@ object RemoteRepositorySpec : Spek({
             }
 
             Then("it should be failed 💀") {
-                verify(repositoryCallback).onError(expectedRespond.message)
+                verify(repositoryCallback).onError((expectedRespond as EventsResponse).message)
             }
         }
     }
